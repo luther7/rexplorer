@@ -1,7 +1,7 @@
 <template>
   <div class="response">
-    <code>
-    test
+    <pre v-highlightjs>
+      <code class="json">
 {
   "firstName": "John",
   "lastName": "Smith",
@@ -30,7 +30,9 @@
   "children": [],
   "spouse": null
 }
-    </code>
+      </code>
+    </pre>
+    <!-- <code>{{ response }}</code> -->
   </div>
 </template>
 
@@ -39,6 +41,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 
 @Component
 export default class Response extends Vue {
+    @Prop() private msg!: string;
 }
 </script>
 
