@@ -2,37 +2,9 @@
   <div class="response">
     <pre v-highlightjs>
       <code class="json">
-{
-  "firstName": "John",
-  "lastName": "Smith",
-  "isAlive": true,
-  "age": 27,
-  "address": {
-    "streetAddress": "21 2nd Street",
-    "city": "New York",
-    "state": "NY",
-    "postalCode": "10021-3100"
-  },
-  "phoneNumbers": [
-    {
-      "type": "home",
-      "number": "212 555-1234"
-    },
-    {
-      "type": "office",
-      "number": "646 555-4567"
-    },
-    {
-      "type": "mobile",
-      "number": "123 456-7890"
-    }
-  ],
-  "children": [],
-  "spouse": null
-}
+        {{ response }}
       </code>
     </pre>
-    <!-- <code>{{ response }}</code> -->
   </div>
 </template>
 
@@ -41,9 +13,11 @@ import Vue from 'vue';
 
 export default Vue.extend({
     name: 'Response',
-    props: {
-        response: String,
-  },
+    computed: {
+        response(): string {
+            return this.$store.state.response;
+        },
+    },
 });
 </script>
 
