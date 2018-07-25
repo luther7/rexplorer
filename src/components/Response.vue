@@ -37,12 +37,14 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import Vue from 'vue';
 
-@Component
-export default class Response extends Vue {
-    @Prop() private msg!: string;
-}
+export default Vue.extend({
+    name: 'Response',
+    props: {
+        response: String,
+  },
+});
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

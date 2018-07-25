@@ -5,15 +5,15 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import Vue from 'vue';
 import Response from './components/Response.vue';
 
-@Component({
-  components: {
-    Response,
-  },
-})
-export default class App extends Vue {}
+export default Vue.extend({
+    name: 'app',
+    components: {
+        Response,
+    },
+});
 </script>
 
 <style>
