@@ -8,8 +8,8 @@ export default new Vuex.Store({
         response: '{"state": "init"}',
     },
     mutations: {
-        updateResponse(state) {
-            state.response = '{"state": "updated"}';
+        updateResponse(state, response) {
+            state.response = response;
         },
     },
     actions: {
