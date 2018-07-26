@@ -1,17 +1,20 @@
 <template>
   <div id="app">
     <Response />
+    <RequestForm />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
 import Response from './components/Response.vue';
+import RequestForm from './components/RequestForm.vue';
 
 export default Vue.extend({
     name: 'app',
     components: {
         Response,
+        RequestForm,
     },
 });
 </script>
