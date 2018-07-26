@@ -12,14 +12,14 @@ import Vue from 'vue';
 
 export default Vue.extend({
     name: 'RequestForm',
-    computed: {
-        message: {
-            get(): string {
-                return this.$store.state.response;
-            },
-            set(response: string) {
-                this.$store.commit('updateResponse', response);
-            },
+    data() {
+        return {
+            response: '',
+        };
+    },
+    methods: {
+        submit() {
+            this.$store.commit('updateResponse', this.response);
         },
     },
 });

@@ -15,7 +15,7 @@ export default Vue.extend({
     name: 'Response',
     computed: {
         response(): string {
-            return this.$store.state.response;
+            return this.$store.getters.getResponse;
         },
     },
 });
