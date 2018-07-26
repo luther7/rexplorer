@@ -1,8 +1,7 @@
 <template>
   <div class="response">
-    <pre v-highlightjs>
+    <pre v-highlightjs="response">
       <code class="json">
-        {{ response }}
       </code>
     </pre>
   </div>
