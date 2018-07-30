@@ -1,6 +1,6 @@
 
-export class Requests {
-    domain: string;
+export default class Requests {
+    private domain: string;
 
     constructor(domain: string) {
         if (domain.endsWith('/')) {
@@ -10,14 +10,16 @@ export class Requests {
         this.domain = domain;
     }
 
-    async get (path: string, query: any): Promise<string> {
+    // public async get (path: string, query: any): Promise<string> {
+        // let queryString: any = Object.keys(query)
+        //     .map((key) => key + '=' + query[key])
+        //     .join('&');
 
-        let queryString: any = Object.keys(query)
-            .map((key) => key + '=' + query[key])
-            .join('&');
+        // let uri: string = this.domain + path + queryString;
 
-        let uri: string = this.domain + path + queryString;
-        let response = await fetch(uri);
+    public async get(path: string): Promise<string> {
+        const uri: string = this.domain + '/' + path;
+        const response = await fetch(uri);
 
         return await response.text();
     }
