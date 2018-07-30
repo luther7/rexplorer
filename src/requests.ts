@@ -3,24 +3,31 @@ export default class Requests {
     private domain: string;
 
     constructor(domain: string) {
-        if (domain.endsWith('/')) {
-            domain = domain.slice(0, -1);
-        }
-
-        this.domain = domain;
+        this.domain = this.trimSlashes(domain);
     }
 
     // public async get (path: string, query: any): Promise<string> {
-        // let queryString: any = Object.keys(query)
-        //     .map((key) => key + '=' + query[key])
-        //     .join('&');
-
-        // let uri: string = this.domain + path + queryString;
-
-    public async get(path: string): Promise<string> {
-        const uri: string = this.domain + '/' + path;
+        // const queryString: string = this.formQueryString(query);
+    public async get (path: string): Promise<string> {
+        const uri: string = this.domain + '/' + this.trimSlashes(path);
         const response = await fetch(uri);
 
         return await response.text();
+    }
+
+    private trimSlashes(input: string): string {
+        if (input.startsWith('/')) {
+            input = input.slice(1);
+        }
+
+        if (input.endsWith('/')) {
+            input = input.slice(0, -1);
+        }
+
+        return input;
+    }
+
+    private formQueryString(query: any): string {
+        return Object.keys(query).map((key) => key + '=' + query[key]).join('&');
     }
 }
