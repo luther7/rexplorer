@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <Header heading="rexplorer"/>
     <Response />
     <Request />
   </div>
@@ -7,12 +8,14 @@
 
 <script lang="ts">
 import Vue from 'vue';
+import Header from './components/Header.vue';
 import Response from './components/Response.vue';
 import Request from './components/Request.vue';
 
 export default Vue.extend({
     name: 'app',
     components: {
+        Header,
         Response,
         Request,
     },
@@ -21,11 +24,9 @@ export default Vue.extend({
 
 <style>
 #app {
-  /* font-family: 'Avenir', Helvetica, Arial, sans-serif; */
-  /* -webkit-font-smoothing: antialiased; */
-  /* -moz-osx-font-smoothing: grayscale; */
-  /* text-align: center; */
-  /* color: #2c3e50; */
-  /* margin-top: 60px; */
+    font-family: 'Source Code Pro', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 60px 60px 60px 60px;
 }
 </style>

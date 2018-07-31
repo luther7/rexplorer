@@ -1,5 +1,5 @@
 
-export default class Requests {
+export default class Fetch {
     private domain: string;
 
     constructor(domain: string) {
@@ -7,8 +7,8 @@ export default class Requests {
     }
 
     // public async get (path: string, query: any): Promise<string> {
-        // const queryString: string = this.formQueryString(query);
-    public async get (path: string): Promise<string> {
+    //     const queryString: string = this.formQueryString(query);
+    public async get(path: string): Promise<string> {
         const uri: string = this.domain + '/' + this.trimSlashes(path);
         const response = await fetch(uri);
 

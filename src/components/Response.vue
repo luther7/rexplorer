@@ -21,7 +21,4 @@ export default Vue.extend({
 </script>
 
 <style scoped>
-code {
-  font-family: monospace;
-}
 </style>
