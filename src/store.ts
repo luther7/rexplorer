@@ -1,29 +1,47 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import Requests from './requests';
+import Request from './request';
 
 Vue.use(Vuex);
 
-const requests: Requests = new Requests();
-
 export default new Vuex.Store({
     state: {
-        response: null,
-        uri: null,
+        error: false,
+        errorText: '',
+        response: {
+            text: '',
+        },
     },
     getters: {
-        getResponse: (state) => {
-            return state.response;
+        getResponseText: (state) => {
+            if (state.error) {
+                return state.errorText;
+            }
+
+            return state.response.text;
         },
     },
     mutations: {
         updateResponse(state, response) {
             state.response = response;
         },
+        updateError(state, errorText: string) {
+            state.error = true;
+            state.errorText = errorText;
+        },
+        clearError(state) {
+            state.error = false;
+            state.errorText = '';
+        },
     },
     actions: {
-        async request({ commit }, uri) {
-            commit('updateResponse', await requests.get(uri));
+        async request({ commit }, rawRequest: string) {
+            try {
+                commit('updateResponse', await Request.execute(rawRequest));
+                commit('clearError');
+            } catch (exception) {
+                commit('updateError', exception.message);
+            }
         },
     },
 });

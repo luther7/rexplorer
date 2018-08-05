@@ -1,12 +1,17 @@
 <template>
-  <form>
-    <div class="row">
-      <div class="column">
-        <label>URI</label>
-        <input type="text" v-model="uri"/>
-      </div>
+  <div class="row">
+    <div class="column">
+      <textarea-autosize
+        autocomplete="off"
+        autocorrect="off"
+        autocapitalize="off"
+        spellcheck="false"
+        v-model="request"
+        :min-height="30"
+        :max-height="350"
+      />
     </div>
-  </form>
+  </div>
 </template>
 
 <script lang="ts">
@@ -16,24 +21,27 @@ export default Vue.extend({
     name: 'request',
     data() {
         return {
-            uri: '',
+            request: '',
         };
     },
     methods: {
-        updateUri()  {
-            this.$store.dispatch('request', this.uri);
+        updateRequest()  {
+            this.$store.dispatch('request', this.request);
         },
     },
     watch: {
-        uri() {
-            this.updateUri();
+        request() {
+            this.updateRequest();
         },
     },
 });
 </script>
 
 <style scoped>
-form {
-  margin: 10px 0;
+textarea {
+  padding: 10px 10px;
+  background-color: #002b36;
+  color: #839496;
+  border: 1pt solid #586e75;
 }
 </style>

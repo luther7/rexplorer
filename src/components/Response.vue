@@ -14,11 +14,16 @@ export default Vue.extend({
     name: 'Response',
     computed: {
         response(): string {
-            return this.$store.getters.getResponse;
+            return this.$store.getters.getResponseText;
         },
     },
 });
 </script>
 
 <style scoped>
+code {
+}
+pre {
+  box-shadow: none;
+}
 </style>
