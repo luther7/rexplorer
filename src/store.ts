@@ -1,11 +1,15 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import Requests from './requests';
 
 Vue.use(Vuex);
 
+const requests: Requests = new Requests();
+
 export default new Vuex.Store({
     state: {
-        response: '{"state": "init"}',
+        response: null,
+        uri: null,
     },
     getters: {
         getResponse: (state) => {
@@ -18,5 +22,8 @@ export default new Vuex.Store({
         },
     },
     actions: {
+        async request({ commit }, uri) {
+            commit('updateResponse', await requests.get(uri));
+        },
     },
 });
